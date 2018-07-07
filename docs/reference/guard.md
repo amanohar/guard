@@ -1,17 +1,17 @@
 ---
 title: Guard
 menu:
-  product_guard_0.1.4:
+  product_guard_0.2.0:
     identifier: guard
     name: Guard
     parent: reference
     weight: 0
 
 product_name: guard
-menu_name: product_guard_0.1.4
+menu_name: product_guard_0.2.0
 section_menu_id: reference
 aliases:
-  - products/guard/0.1.4/reference/
+  - products/guard/0.2.0/reference/
 
 ---
 ## guard
@@ -40,6 +40,7 @@ Guard by AppsCode - Kubernetes Authentication WebHook Server
 
 * [guard get](/docs/reference/guard_get.md)	 - Get PKI
 * [guard init](/docs/reference/guard_init.md)	 - Init PKI
+* [guard login](/docs/reference/guard_login.md)	 - Kubectl credential plugin
 * [guard run](/docs/reference/guard_run.md)	 - Run server
 * [guard version](/docs/reference/guard_version.md)	 - Prints binary version number.
 

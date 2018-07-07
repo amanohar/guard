@@ -2,17 +2,17 @@
 title: Table of Contents | Guides
 description: Table of Contents | Guides
 menu:
-  product_guard_0.1.4:
+  product_guard_0.2.0:
     identifier: guides-readme
     name: Readme
     parent: guides
     weight: -1
 product_name: guard
-menu_name: product_guard_0.1.4
+menu_name: product_guard_0.2.0
 section_menu_id: guides
-url: /products/guard/0.1.4/guides/
+url: /products/guard/0.2.0/guides/
 aliases:
-  - /products/guard/0.1.4/guides/README/
+  - /products/guard/0.2.0/guides/README/
 ---
 
 # Guides
@@ -27,4 +27,5 @@ Guides show you how to perform tasks with Guard.
   - [Azure](/docs/guides/authenticator/azure.md). Explains how to use Azure authenticator.
   - [LDAP](/docs/guides/authenticator/ldap.md). Explains how to use LDAP using simple or kerberos authentication.
   - [Azure Active Directory via LDAP](/docs/guides/authenticator/ldap_azure.md). Explains how to authenticate using secure LDAP of Azure Active Directory Domain Services.
+  - [Amazon EKS](/docs/guides/authenticator/aws_eks.md). Explains how to use with Amazon EKS cluster.
 - [RBAC Roles](/docs/guides/rbac.md). Documents how to configure RBAC roles for user groups.
