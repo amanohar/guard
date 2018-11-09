@@ -13,6 +13,17 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
+const (
+	// AzureClientID is MS Graph application client ID
+	AzureClientID = "azure.client-id"
+	// AzureClientSecret is MS Graph application client secret to use
+	AzureClientSecret = "azure.client-secret"
+	// AzureTenantID is MS Graph application tenant id to use
+	AzureTenantID = "azure.tenant-id"
+	// AzureUseGroupUid set if group UID should be for authentication instead of group display name
+	AzureUseGroupUid = "azure.use-group-uid"
+)
+
 type Options struct {
 	ClientID     string
 	ClientSecret string
@@ -28,10 +39,10 @@ func NewOptions() Options {
 }
 
 func (o *Options) AddFlags(fs *pflag.FlagSet) {
-	fs.StringVar(&o.ClientID, "azure.client-id", o.ClientID, "MS Graph application client ID to use")
-	fs.StringVar(&o.ClientSecret, "azure.client-secret", o.ClientSecret, "MS Graph application client secret to use")
-	fs.StringVar(&o.TenantID, "azure.tenant-id", o.TenantID, "MS Graph application tenant id to use")
-	fs.BoolVar(&o.UseGroupUID, "azure.use-group-uid", o.UseGroupUID, "Use group UID for authentication instead of group display name")
+	fs.StringVar(&o.ClientID, AzureClientID, o.ClientID, "MS Graph application client ID to use")
+	fs.StringVar(&o.ClientSecret, AzureClientSecret, o.ClientSecret, "MS Graph application client secret to use")
+	fs.StringVar(&o.TenantID, AzureTenantID, o.TenantID, "MS Graph application tenant id to use")
+	fs.BoolVar(&o.UseGroupUID, AzureUseGroupUid, o.UseGroupUID, "Use group UID for authentication instead of group display name")
 }
 
 func (o *Options) Validate() []error {

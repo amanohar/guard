@@ -17,6 +17,11 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
+const (
+	// LDAPBindPassword is password in credentials to search for users and groups
+	LDAPBindPassword = "ldap.bind-password"
+)
+
 type Options struct {
 	ServerAddress string
 
@@ -133,7 +138,7 @@ func (o *Options) AddFlags(fs *pflag.FlagSet) {
 	fs.StringVar(&o.ServerAddress, "ldap.server-address", o.ServerAddress, "Host or IP of the LDAP server")
 	fs.StringVar(&o.ServerPort, "ldap.server-port", "389", "LDAP server port")
 	fs.StringVar(&o.BindDN, "ldap.bind-dn", o.BindDN, "The connector uses this DN in credentials to search for users and groups. Not required if the LDAP server provides access for anonymous auth.")
-	fs.StringVar(&o.BindPassword, "ldap.bind-password", o.BindPassword, "The connector uses this password in credentials to search for users and groups. Not required if the LDAP server provides access for anonymous auth.")
+	fs.StringVar(&o.BindPassword, LDAPBindPassword, o.BindPassword, "The connector uses this password in credentials to search for users and groups. Not required if the LDAP server provides access for anonymous auth.")
 	fs.StringVar(&o.UserSearchDN, "ldap.user-search-dn", o.UserSearchDN, "BaseDN to start the search user")
 	fs.StringVar(&o.UserSearchFilter, "ldap.user-search-filter", DefaultUserSearchFilter, "Filter to apply when searching user")
 	fs.StringVar(&o.UserAttribute, "ldap.user-attribute", DefaultUserAttribute, "Ldap username attribute")

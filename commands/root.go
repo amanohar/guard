@@ -2,10 +2,13 @@ package commands
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"strings"
 
 	v "github.com/appscode/go/version"
+	"github.com/appscode/guard/auth/providers/azure"
+	"github.com/appscode/guard/auth/providers/ldap"
 	"github.com/appscode/kutil/tools/analytics"
 	"github.com/jpillora/go-ogle-analytics"
 	"github.com/json-iterator/go"
@@ -30,7 +33,11 @@ func NewRootCmd() *cobra.Command {
 		DisableFlagParsing: true,
 		PersistentPreRun: func(c *cobra.Command, args []string) {
 			c.Flags().VisitAll(func(flag *pflag.Flag) {
-				log.Printf("FLAG: --%s=%q", flag.Name, flag.Value)
+				flagValue := "<REDACTED>"
+				if !isFlagSecret(flag.Name) {
+					flagValue = fmt.Sprintf("%q", flag.Value)
+				}
+				log.Printf("FLAG: --%s=%s", flag.Name, flagValue)
 			})
 			if enableAnalytics && gaTrackingCode != "" {
 				if client, err := ga.NewClient(gaTrackingCode); err == nil {
@@ -52,4 +59,15 @@ func NewRootCmd() *cobra.Command {
 	cmd.AddCommand(NewCmdLogin())
 	cmd.AddCommand(v.NewCmdVersion())
 	return cmd
+}
+
+func isFlagSecret(flagName string) bool {
+	switch flagName {
+	case azure.AzureClientSecret:
+		return true
+	case ldap.LDAPBindPassword:
+		return true
+	default:
+		return false
+	}
 }
